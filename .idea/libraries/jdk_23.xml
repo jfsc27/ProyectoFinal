@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="jdk-23" type="kotlin.js">
-    <CLASSES>
-      <root url="file://$USER_HOME$/Downloads/jdk-23" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
