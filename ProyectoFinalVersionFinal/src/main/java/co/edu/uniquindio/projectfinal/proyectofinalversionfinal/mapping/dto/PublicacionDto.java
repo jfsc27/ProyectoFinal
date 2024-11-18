@@ -7,7 +7,7 @@ public class PublicacionDto {
     private LocalDate fechaPublicacion;
     private LocalTime horaPublicacion;
     private String descripcion;
-    private ProductoDto producto;
+    private static ProductoDto producto;
     private String idVendedor;
 
     public PublicacionDto() {

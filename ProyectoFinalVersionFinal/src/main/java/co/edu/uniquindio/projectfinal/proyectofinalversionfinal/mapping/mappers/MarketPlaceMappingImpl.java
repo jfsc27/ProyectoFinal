@@ -85,6 +85,15 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMapping {
         return chatDto;
     }
 
+    public Chat chatDtoToChat(ChatDto chatDto) {
+        Chat chat = new Chat();
+        chat.setIdChat(chatDto.getId());
+        chat.setListaMensajes(modelFactory.getListaMensajesChat(chatDto.getId()));
+        chat.setUsuario1((Vendedor) usuarioDtoToUsuario(chatDto.getUsuario1()));
+        chat.setUsuario2((Vendedor) usuarioDtoToUsuario(chatDto.getUsuario2()));
+        return chat;
+    }
+
     @Override
     public Publicacion publicacionDtoToPublicacion(PublicacionDto publicacion) {
 

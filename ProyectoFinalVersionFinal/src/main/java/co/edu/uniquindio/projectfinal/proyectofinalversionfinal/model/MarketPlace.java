@@ -85,11 +85,12 @@ public class MarketPlace implements IInteraccionEntreContactos, ICrudPublicacion
     }
 
     public Chat getChat(Vendedor vendedor, Vendedor contacto) {
-        for (Vendedor v : listaVendedores) {
-            if (v.getIdVendedor().equals(vendedor.getIdVendedor())) {
-                for (Chat c : v.getMuro().getListaChats()) {
-                    if (c.getListaUsuarios().contains(vendedor) && c.getListaUsuarios().contains(contacto)) {
-                        return c; // Retornamos el chat si ambos usuarios están presentes
+        for(Vendedor v : listaVendedores){
+            if(v.getIdVendedor().equals(vendedor.getIdVendedor())){
+                for (Chat c : v.getMuro().getListaChats()){
+                    if (c.getUsuario1().getIdVendedor().equals(vendedor.getIdVendedor()) && c.getUsuario2().getIdVendedor().equals(contacto.getIdVendedor())
+                            || c.getUsuario1().getIdVendedor().equals(contacto.getIdVendedor()) && c.getUsuario2().getIdVendedor().equals(vendedor.getIdVendedor())){
+                        return c;
                     }
                 }
             }
@@ -382,6 +383,18 @@ public class MarketPlace implements IInteraccionEntreContactos, ICrudPublicacion
         }
 
         // Si no se encuentra la publicación con el mismo producto, retornamos false
+        return false;
+    }
+
+    public boolean agregarMensajeChat(Mensaje mensaje, Chat chat){
+        for (Vendedor vendedor: listaVendedores){
+            for (Chat c : vendedor.getMuro().getListaChats()){
+                if (c.getIdChat().equals(chat.getIdChat())){
+                    c.agregarMensaje(mensaje);
+                    return true;
+                }
+            }
+        }
         return false;
     }
 

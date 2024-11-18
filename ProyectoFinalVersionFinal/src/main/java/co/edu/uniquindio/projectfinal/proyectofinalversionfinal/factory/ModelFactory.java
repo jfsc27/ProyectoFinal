@@ -90,6 +90,11 @@ public class ModelFactory implements IModelFactoryService {
     }
 
     @Override
+    public boolean agregarMensajeChat(MensajeDto mensaje, ChatDto chat) {
+        return marketPlace.agregarMensajeChat(mapping.mesajeDtoToMensaje(mensaje), mapping.chatDtoToChat(chat));
+    }
+
+    @Override
     public ChatDto getChat(VendedorDto vendedor, VendedorDto contacto) {
         Chat chat = marketPlace.getChat(
                 (Vendedor) mapping.usuarioDtoToUsuario(vendedor),
@@ -145,10 +150,14 @@ public class ModelFactory implements IModelFactoryService {
         return List.of();
     }
 
-    @Override
     public List<MensajeDto> getListaMensajeChat(String id) {
-        return List.of();
+        return mapping.mensajeToMensajesDto(marketPlace.getMensajesChat(id));
     }
+
+    public List<Mensaje> getListaMensajesChat(String id) {
+        return marketPlace.getMensajesChat(id);
+    }
+
 
     @Override
     public boolean agregarPublicacion(PublicacionDto publicacion, String idVendedor) {
@@ -182,11 +191,11 @@ public class ModelFactory implements IModelFactoryService {
         MarketPlace marketPlace1 = new MarketPlace("Marketsito");
 
         //Creacion de productos
-        Producto producto1 = new Producto("Mazda carro", "/co/edu/uniquindio/marketpruebas/imagenes/Mazda.jpeg", "Vehiculos usados", Estado.PUBLICADO, 40000000);
-        Producto producto2 = new Producto("Nintendo Switch", "/co/edu/uniquindio/marketpruebas/imagenes/Nintendo-Switch.jpg","Consolas de video",Estado.PUBLICADO, 500000);
-        Producto producto3 = new Producto("Closet de dos puertas", "/co/edu/uniquindio/marketpruebas/imagenes/Closet-dos.png","Muebles para el hogar",Estado.PUBLICADO, 450000);
-        Producto producto4 = new Producto("Iphone 25", "/co/edu/uniquindio/marketpruebas/imagenes/iphone 25.jpeg","Celulares",Estado.PUBLICADO, 450000);
-        Producto producto5 = new Producto("Moto cualquiera","/co/edu/uniquindio/marketpruebas/imagenes/Moto.png", "Vehiculos",Estado.DISPONIBLE,2500000);
+        Producto producto1 = new Producto("Mazda carro", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/biciPro.png", "Vehiculos usados", Estado.PUBLICADO, 40000000);
+        Producto producto2 = new Producto("Nintendo Switch", "","Consolas de video",Estado.PUBLICADO, 500000);
+        Producto producto3 = new Producto("Closet de dos puertas", "","Muebles para el hogar",Estado.PUBLICADO, 450000);
+        Producto producto4 = new Producto("Iphone 25", "","Celulares",Estado.PUBLICADO, 450000);
+        Producto producto5 = new Producto("Moto cualquiera","", "Vehiculos",Estado.DISPONIBLE,2500000);
 
         //Creacion de publicaciones
         Publicacion publicacion = new Publicacion(LocalDate.now(), LocalTime.now(), producto1,"Flamante vehiculo mazda dos dias de uso, mas informacion al interno");
@@ -217,7 +226,9 @@ public class ModelFactory implements IModelFactoryService {
         Comentario comentario4 = new Comentario(vendedor3,LocalDate.now().plusDays(4),LocalTime.now(),"Gas","3");
 
         //Creacion de chats
-        Chat chat1 = new Chat("01", vendedor1, vendedor2);
+        Chat chat1 = new Chat("01");
+        chat1.setUsuario1(vendedor1);
+        chat1.setUsuario2(vendedor2);
 
 
         //Mensajes

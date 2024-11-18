@@ -16,6 +16,7 @@ public interface IModelFactoryService {
     boolean actualizarPublicacion(PublicacionDto publicacion, VendedorDto vendedor);
     List<PublicacionDto> getListaPublicaciones(Muro muro);
     boolean crearUsuario(VendedorDto vendedor);
+    boolean agregarMensajeChat(MensajeDto mensaje, ChatDto chat);
 
     ChatDto getChat(VendedorDto vendedor, VendedorDto contacto);
 

@@ -1,0 +1,31 @@
+.btn-iniciar{
+    -fx-background-color: #e5e8e8;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.30),30,0,0,0);
+    -fx-cursor: hand;
+}
+.btn-iniciar:hover{
+    -fx-background-color: #9da8a8;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 244, 180, 0.3),30,0,0,0);
+}
+
+.text-field{
+    -fx-background-color: #ffffff;
+    -fx-border-color: rgba(255, 244, 180, 0.3);
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px 10px;
+    -fx-effect: dropshadow(gaussian, rgba(255,244,180,0.3), 30, 0, 0, 0);
+    -fx-cursor: hand;
+
+}
+.text-field:focused {
+    -fx-border-color: rgba(255, 244, 180, 0.3);
+    -fx-border-width: 2px;
+}
+
+
+
+

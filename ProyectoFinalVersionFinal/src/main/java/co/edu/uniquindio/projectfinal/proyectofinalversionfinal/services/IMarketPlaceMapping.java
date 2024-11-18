@@ -36,6 +36,7 @@ public interface IMarketPlaceMapping {
      * @return Objeto ChatDto correspondiente.
      */
     ChatDto chatToChatDto(Chat chat);
+    Chat chatDtoToChat(ChatDto chatDto);
 
     /**
      * Convierte un objeto PublicacionDto en una Publicacion.

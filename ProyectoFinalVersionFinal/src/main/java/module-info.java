@@ -4,6 +4,7 @@ module co.edu.uniquindio.projectfinal.proyectofinalversionfinal {
     requires java.desktop;
 
 
-    opens co.edu.uniquindio.projectfinal.proyectofinalversionfinal to javafx.fxml;
+    opens co.edu.uniquindio.projectfinal.proyectofinalversionfinal.viewController to javafx.fxml;
     exports co.edu.uniquindio.projectfinal.proyectofinalversionfinal;
+    exports co.edu.uniquindio.projectfinal.proyectofinalversionfinal.viewController;
 }

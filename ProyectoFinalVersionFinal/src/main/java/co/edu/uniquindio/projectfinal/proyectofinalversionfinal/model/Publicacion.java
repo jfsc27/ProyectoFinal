@@ -44,7 +44,6 @@ public class Publicacion {
         listaMegustas.add(vendedor);
     }
 
-    @Override
     public void agregarMeGusta(Vendedor vendedor) {
         agregarMegusta(vendedor);
     }
