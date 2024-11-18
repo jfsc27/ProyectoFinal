@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Publicacion {
     private String idVendedor;
-
+    private String idPublicacion;
     private LocalDate fechaPublicacion;
     private LocalTime horaPublicacion;
     private String descripcion;
@@ -15,7 +15,7 @@ public class Publicacion {
     private List<Comentario> listaComentarios;
     private List<Vendedor> listaMegustas;
 
-    public Publicacion(LocalDate fechaPublicacion, LocalTime horaPublicacion, Producto producto,String descripcion) {
+    public Publicacion(LocalDate fechaPublicacion, LocalTime horaPublicacion, Producto producto,String descripcion, String idPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
         this.horaPublicacion = horaPublicacion;
         this.producto = producto;
@@ -102,5 +102,13 @@ public class Publicacion {
 
     public void setIdVendedor(String idVendedor) {
         this.idVendedor = idVendedor;
+    }
+
+    public String getIdPublicacion() {
+        return idPublicacion;
+    }
+
+    public void setIdPublicacion(String idPublicacion) {
+        this.idPublicacion = idPublicacion;
     }
 }
