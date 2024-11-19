@@ -191,82 +191,55 @@ public class ModelFactory implements IModelFactoryService {
         MarketPlace marketPlace1 = new MarketPlace("Marketsito");
 
         //Creacion de productos
-        Producto producto1 = new Producto("Mazda carro", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/biciPro.png", "Vehiculos usados", Estado.PUBLICADO, 40000000);
-        Producto producto2 = new Producto("Nintendo Switch", "","Consolas de video",Estado.PUBLICADO, 500000);
-        Producto producto3 = new Producto("Closet de dos puertas", "","Muebles para el hogar",Estado.PUBLICADO, 450000);
-        Producto producto4 = new Producto("Iphone 25", "","Celulares",Estado.PUBLICADO, 450000);
-        Producto producto5 = new Producto("Moto cualquiera","", "Vehiculos",Estado.DISPONIBLE,2500000);
+        Producto producto1 = new Producto("Servicio Guardaespaldas", "", "Servicio privado", Estado.PUBLICADO, 200);
+        Producto producto2 = new Producto("Camiseta Local JUNIOR FC 2024", "","Equipación deportiva",Estado.PUBLICADO, 299950);
+        Producto producto3 = new Producto("Bicibleta usada", "","Artículos usados",Estado.PUBLICADO, 20000);
+        Producto producto4 = new Producto("Mano de guineo verde", "","Alimentos",Estado.PUBLICADO, 2000);
+        Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca","", "Artículas deportivos",Estado.VENDIDO,4500000);
 
         //Creacion de publicaciones
-        Publicacion publicacion = new Publicacion(LocalDate.now(), LocalTime.now(), producto1,"Flamante vehiculo mazda dos dias de uso, mas informacion al interno");
-        Publicacion publicacion2 = new Publicacion(LocalDate.now().plusDays(1),LocalTime.now(),producto2,"Espectacular consola de video, nintendo porfavor no me demandes, mas informacion al interno");
-        Publicacion publicacion3 = new Publicacion(LocalDate.now().plusDays(2),LocalTime.now(),producto3,"Closet de dos puertas, de 3 metros de alto y 1,5 de ancho, mdf, mas info al interno");
-        Publicacion publicacion4 = new Publicacion(LocalDate.now().plusDays(3),LocalTime.now(),producto4,"Unico en el mundo, iphone 25, extraido de los laboratorios de apple, promosion del 10% al primer interesado, precio real: 1 billon de dolars");
+        Publicacion publicacion1 = new Publicacion(LocalDate.now(), LocalTime.now(), producto1,"Servicio privado de seguidad 5 estrellas y 24 hpras. Cuenta con 2 guardaespaldas expertos en MMA para protegerlo a usted y su familia (uno de ellos se cree capaz de ganarle una pelea a Khabid). Precio negociable", "00001");
+        Publicacion publicacion2 = new Publicacion(LocalDate.now().plusDays(1),LocalTime.now(),producto2,"Camiseta Local tipo jugador del mejor club de Colomboia. Disponible en todas las tallas de hombre, mujer y feministas", "00002");
+        Publicacion publicacion3 = new Publicacion(LocalDate.now().plusDays(2),LocalTime.now(),producto3,"Vendo mi bicicleta con 2 semanas de uso por necesidad, le hacen falta las ruedas pero ella sirve. Precio negociable =D", "00003");
+        Publicacion publicacion4 = new Publicacion(LocalDate.now().plusDays(3),LocalTime.now(),producto4,"Deliciosa mano de guineo verde perfecta pa un cayeye. 1 mano por 2k, 3 manos en 5k pa ti", "00004");
+        Publicacion publicacion5 = new Publicacion(LocalDate.now().plusDays(4),LocalTime.now(),producto5,"El mejor balón que se ha creado en la historia del fútbol. Firmada por Camilo Zúñiga", "00005");
 
         //Creacion de vendedores
-        Vendedor vendedor1 = new Vendedor("Pepe", "Bermuda", "00001", "Alli al lado", "pepito07", "1234", "01");
-        Vendedor vendedor2 = new Vendedor("Gustava", "Santos", "00002", "Alli al otro lado", "Pollos08", "12345", "02");
-        Vendedor vendedor3 = new Vendedor("Martin", "Santos", "00003", "Alli", "user01", "00001", "03");
-        Vendedor vendedor4 = new Vendedor("Pedro", "Martinez", "00004", "Alli", "user02", "00002", "04");
-        Vendedor vendedor5 = new Vendedor("vendedor5","apellido5","00005","Alli","user05","00005","05");
-        Vendedor vendedor6 = new Vendedor("vendedor6","apellido6","00006","Alli","user06","00006","06");
-        Vendedor vendedor7 = new Vendedor("vendedor7","apellido7","00007","Alli","user07","00007","07");
-        Vendedor vendedor8 = new Vendedor("vendedor8", "apellido8","00008","Alli","user08","00008","08");
-        Vendedor vendedor9 = new Vendedor("vendedor9","apellido9","00009","Alli","user09","00009","09");
-        Vendedor vendedor10 = new Vendedor("vendedor10", "apellido10","000010","Alli","user10","000010","10");
-        Vendedor vendedor11 = new Vendedor("vendedor11","apellido11","000011","Alli","user11","000011","11");
+        Vendedor vendedor1 = new Vendedor("Miguel", "Durant", "00001", "Cambia a diario", "MigueMC", "12345", "01");
+        Vendedor vendedor2 = new Vendedor("Juan", "Chica", "00002", "Bosconia", "JuanMC", "12345", "02");
+        Vendedor vendedor3 = new Vendedor("Yulieth", "Cazanova", "00003", "Frente a la U", "Yulie", "12345", "03");
+        Vendedor vendedor4 = new Vendedor("Yonaiker", "Ceballos", "00004", "Atrás de la u", "Yoni", "12345", "04");
+        Vendedor vendedor5 = new Vendedor("vendedor5","apellido5","00005","DirecciónX","user5","12345","05");
+        Vendedor vendedor6 = new Vendedor("vendedor6","apellido6","00006","DirecciónX","user6","12345","06");
+        Vendedor vendedor7 = new Vendedor("vendedor7","apellido7","00007","DirecciónX","user7","12345","07");
+        Vendedor vendedor8 = new Vendedor("vendedor8", "apellido8","00008","DirecciónX","user8","12345","08");
+        Vendedor vendedor9 = new Vendedor("vendedor9","apellido9","00009","DirecciónX","user9","12345","09");
+        Vendedor vendedor10 = new Vendedor("vendedor10", "apellido10","000010","DirecciónX","user10","12345","10");
+        Vendedor vendedor11 = new Vendedor("vendedor11","apellido11","000011","DirecciónX","user11","12345","11");
 
         //Creacion de administradores
-        Administrador admin = new Administrador("Admin", "admin", "00000", "desconocida", "admin", "admin","00");
+        Administrador admin = new Administrador("Admin", "istrador", "00000", "Privada", "admin", "12345","00");
 
         //Creacion de comentarios
-        Comentario comentario = new Comentario(vendedor4,LocalDate.now(),LocalTime.now(),"JAJAJAJAJ el parcerito mas alucin","0");
-        Comentario comentario2 = new Comentario(vendedor2,LocalDate.now().plusDays(2),LocalTime.now(),"Esta feo","1");
-        Comentario comentario3 = new Comentario(vendedor1, LocalDate.now().plusDays(3),LocalTime.now(),"Un saludo","2");
-        Comentario comentario4 = new Comentario(vendedor3,LocalDate.now().plusDays(4),LocalTime.now(),"Gas","3");
+        Comentario comentario = new Comentario(vendedor4, LocalDate.now(), LocalTime.now(),"Precio?", "1");
+        Comentario comentario2 = new Comentario(vendedor2,LocalDate.now().plusDays(2),LocalTime.now(),"Yo conozco donde lo venden más barato", "2");
 
-        //Creacion de chats
-        Chat chat1 = new Chat("01");
-        chat1.setUsuario1(vendedor1);
-        chat1.setUsuario2(vendedor2);
-
-
-        //Mensajes
-        Mensaje mensaje1 = new Mensaje(vendedor1, LocalDate.now().minusDays(5), LocalTime.now().minusHours(2), "Hola holaaa", "01");
-        Mensaje mensaje2 = new Mensaje(vendedor1, LocalDate.now().minusDays(5), LocalTime.now().minusHours(2).plusMinutes(2), "Como estas?", "02");
-        Mensaje mensaje3 = new Mensaje(vendedor1, LocalDate.now().minusDays(5), LocalTime.now().minusHours(2).plusMinutes(5), "Que pena molestar, tu sabes a que horas es mañana la induccion?", "03");
-        Mensaje mensaje4 = new Mensaje(vendedor1, LocalDate.now().minusDays(5), LocalTime.now().minusHours(1), "Hey que tal, no me acuerdo, espera busco donde anote la hora", "04");
-        Mensaje mensaje5 = new Mensaje(vendedor1, LocalDate.now().minusDays(5), LocalTime.now().minusHours(1).plusMinutes(5), "Okey okey", "05");
-
-        //Agregar mensajes al chat
-        chat1.agregarMensaje(mensaje1);
-        chat1.agregarMensaje(mensaje2);
-        chat1.agregarMensaje(mensaje3);
-        chat1.agregarMensaje(mensaje4);
-        chat1.agregarMensaje(mensaje5);
+        //(Usuario usuario, LocalDate fecha, LocalTime hora, String mensaje, String idMensaje
 
         //Agregar comentario a publicaciones
         publicacion4.agregarComentario(comentario);
-        publicacion.agregarComentario(comentario2);
-        publicacion2.agregarComentario(comentario3);
-        publicacion3.agregarComentario(comentario4);
-
-        //Agregar interaccion a una publicacion
-        publicacion4.agregarMeGusta(vendedor1);
-        publicacion.agregarMeGusta(vendedor2);
+        publicacion1.agregarComentario(comentario2);
 
         //Creacion de muros
         Muro muro = new Muro();
         Muro muro2 = new Muro();
 
         //Agregar publicaciones al muro
-        muro.agregarPublicacion(publicacion);
+        muro.agregarPublicacion(publicacion1);
         muro.agregarPublicacion(publicacion2);
         muro.agregarPublicacion(publicacion3);
         muro2.agregarPublicacion(publicacion4);
 
-        muro.getListaChats().add(chat1);
-        muro2.getListaChats().add(chat1);
         //Agregar muro a un vendedor
         vendedor1.setMuro(muro);
         vendedor2.setMuro(muro2);
@@ -293,8 +266,6 @@ public class ModelFactory implements IModelFactoryService {
         //Agregar distintos objetos al marketplace automaticamente
         List<Object> parametros = Arrays.asList(vendedor1,vendedor2,admin);
         parametros.forEach(marketPlace1::agregarAutomatico);
-
-        //Agregar chat al mur0
 
         marketPlace = marketPlace1;
     }

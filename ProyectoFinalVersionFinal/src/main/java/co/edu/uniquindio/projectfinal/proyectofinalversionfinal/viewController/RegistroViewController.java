@@ -20,43 +20,30 @@ import java.util.ResourceBundle;
 
 public class RegistroViewController implements Initializable {
     UsuarioController usuarioController;
-
     @FXML
     private Button btnCrearCuenta;
-
     @FXML
     private CheckBox checkTerminos;
-
     @FXML
     private TextField txtApellido;
-
     @FXML
     private TextField txtCedula;
-
     @FXML
     private PasswordField txtConfirmPass;
-
     @FXML
     private TextField txtConfirmarVisible;
-
     @FXML
     private TextField txtDireccion;
-
     @FXML
     private TextField txtId;
-
     @FXML
     private TextField txtNombre;
-
     @FXML
     private PasswordField txtPass;
-
     @FXML
     private TextField txtPassVisible;
-
     @FXML
     private TextField txtUsuario;
-
     @FXML
     void onCrearCuenta(ActionEvent event) throws IOException {
         if (checkTerminos.isSelected() && !txtApellido.getText().isEmpty() && !txtCedula.getText().isEmpty() && !txtDireccion.getText().isEmpty() && !txtId.getText().isEmpty() && !txtNombre.getText().isEmpty() && txtUsuario.getText().isEmpty()) {
@@ -84,7 +71,6 @@ public class RegistroViewController implements Initializable {
             JOptionPane.showMessageDialog(null, "Por favor llene todos los espacios correctamente");
         }
     }
-
     public void pasarPaginaPrincipal(VendedorDto dto) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/paginaPrincipal.fxml"));
         Scene scene = new Scene(loader.load(),490,650);
@@ -92,10 +78,8 @@ public class RegistroViewController implements Initializable {
         controller.inicializarPaginaPrincipal(dto);
         Stage stage = new Stage();
         stage.setScene(scene);
-
         Stage stageCerrar = (Stage) btnCrearCuenta.getScene().getWindow();
         stageCerrar.close();
-
         stage.show();
     }
 

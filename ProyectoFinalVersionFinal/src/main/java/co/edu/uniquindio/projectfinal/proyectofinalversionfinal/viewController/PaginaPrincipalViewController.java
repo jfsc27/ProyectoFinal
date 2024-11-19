@@ -23,5 +23,5 @@ public class PaginaPrincipalViewController {
         usuarioController = new UsuarioController();
         muroController = new MuroController();
         mensajeController = new MensajeController();
-}
+    }
 }

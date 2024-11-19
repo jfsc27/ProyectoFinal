@@ -2,16 +2,16 @@ package co.edu.uniquindio.projectfinal.proyectofinalversionfinal.viewController;
 
 import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.controller.UsuarioController;
 import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.factory.ModelFactory;
-import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.mapping.dto.AdministradorDto;
 import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.mapping.dto.VendedorDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.mapping.dto.AdministradorDto;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -58,10 +58,8 @@ public class LoginViewController {
             PaginaPrincipalViewController controller = fxmlLoader.getController();
             controller.inicializarPaginaPrincipal(((VendedorDto) usuario));
             stage.setScene(scene);
-
             Stage stageCerrar = (Stage) btnIniciarSesion.getScene().getWindow();
             stageCerrar.close();
-
             stage.show();
         } else if (usuario instanceof AdministradorDto){
             JOptionPane.showMessageDialog(null, "Bienvenido Administrador "+ usuario.getNombre());
@@ -91,7 +89,6 @@ public class LoginViewController {
         //Cerrar la ventana actual
         Stage stageCerrar = (Stage) btnIniciarSesion.getScene().getWindow();
         stageCerrar.close();
-
         stage.show();
     }
 
