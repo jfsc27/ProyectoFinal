@@ -53,4 +53,9 @@ public class UsuarioController implements IUsuarioControllerServices {
     public boolean crearUsuario(VendedorDto vendedor) {
         return modelFactory.crearUsuario(vendedor);
     }
+
+    @Override
+    public List<VendedorDto> getContactosNuevos(VendedorDto usuario) {
+        return modelFactory.getListaContactosNuevos(usuario);
+    }
 }

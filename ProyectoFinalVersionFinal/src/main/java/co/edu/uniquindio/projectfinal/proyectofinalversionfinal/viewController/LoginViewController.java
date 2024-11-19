@@ -35,6 +35,7 @@ public class LoginViewController {
     @FXML
     void initialize(){
         usuarioController = new UsuarioController();
+        modelFactory = ModelFactory.getInstance();
     }
 
     @FXML

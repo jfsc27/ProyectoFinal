@@ -159,7 +159,23 @@ public class MarketPlace implements IInteraccionEntreContactos, ICrudPublicacion
         // Retornamos la lista de comentarios
         return comentarios;
     }
+    public List<Vendedor> getListaContactosNuevos(Vendedor vendedor) {
+        List<Vendedor> contactos = new ArrayList<>();
+        contactos.add(vendedor);
+        List<Vendedor> nuevos = new ArrayList<>();
 
+        for (Vendedor v : listaVendedores) {
+            if (v.getIdVendedor().equals(vendedor.getIdVendedor())) {
+                contactos = v.getListaContactos();
+            }
+        }
+        for (Vendedor v2 : listaVendedores) {
+            if(!v2.getIdVendedor().equals(vendedor.getIdVendedor())) {
+                nuevos.add(v2);
+            }
+        }
+        return nuevos;
+    }
     public List<Vendedor> getListaMeGusta(String idVendedor, Producto producto) {
         // Recorremos la lista de vendedores
         for (Vendedor vendedor : listaVendedores) {

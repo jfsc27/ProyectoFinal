@@ -7,7 +7,7 @@ public class PublicacionDto {
     private LocalDate fechaPublicacion;
     private LocalTime horaPublicacion;
     private String descripcion;
-    private static ProductoDto producto;
+    private ProductoDto producto;
     private String idVendedor;
 
     public PublicacionDto() {
@@ -45,7 +45,7 @@ public class PublicacionDto {
         this.descripcion = descripcion;
     }
 
-    public static ProductoDto getProducto() {
+    public  ProductoDto getProducto() {
         return producto;
     }
 

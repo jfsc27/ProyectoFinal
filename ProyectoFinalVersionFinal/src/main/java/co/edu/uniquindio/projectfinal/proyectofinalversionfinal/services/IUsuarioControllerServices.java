@@ -15,4 +15,5 @@ public interface IUsuarioControllerServices {
     public List<VendedorDto> getListaContactos(UsuarioDto usuario);
     public UsuarioDto getUsuarioPorId(String id);
     boolean crearUsuario(VendedorDto vendedor);
+    List<VendedorDto> getContactosNuevos(VendedorDto usuario);
 }

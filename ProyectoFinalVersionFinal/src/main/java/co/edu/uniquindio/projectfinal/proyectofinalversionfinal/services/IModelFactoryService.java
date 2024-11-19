@@ -17,7 +17,7 @@ public interface IModelFactoryService {
     List<PublicacionDto> getListaPublicaciones(Muro muro);
     boolean crearUsuario(VendedorDto vendedor);
     boolean agregarMensajeChat(MensajeDto mensaje, ChatDto chat);
-
+    List<VendedorDto> getListaContactosNuevos(VendedorDto vendedor);
     ChatDto getChat(VendedorDto vendedor, VendedorDto contacto);
 
     //Retorno de listas asociadas a clases

@@ -6,19 +6,28 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="646.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.projectfinal.proyectofinalversionfinal.viewController.PaginaPrincipalViewController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="646.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.projectfinal.proyectofinalversionfinal.viewController.PaginaPrincipalViewController">
   <tabs>
-    <Tab text="MarketPlace">
+    <Tab fx:id="tabMarketPlace" text="MarketPlace">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="490.0" prefWidth="650.0">
                <children>
                   <AnchorPane layoutX="15.0" layoutY="16.0" prefHeight="394.0" prefWidth="618.0">
                      <children>
-                        <AnchorPane layoutX="14.0" layoutY="5.0" prefHeight="379.0" prefWidth="306.0">
+                        <AnchorPane layoutX="14.0" layoutY="5.0" prefHeight="379.0" prefWidth="364.0">
                            <children>
-                              <ScrollPane layoutX="14.0" layoutY="33.0" prefHeight="334.0" prefWidth="282.0" />
+                              <ScrollPane layoutX="14.0" layoutY="33.0" prefHeight="366.0" prefWidth="366.0">
+                                 <content>
+                                    <GridPane fx:id="gridProductos">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                    </GridPane>
+                                 </content></ScrollPane>
                               <Label layoutX="36.0" layoutY="13.0" prefHeight="0.0" prefWidth="135.0" text="PRODUCTOS" textFill="#37474F">
                                  <font>
                                     <Font name="Rockwell Extra Bold" size="18.0" />
@@ -26,27 +35,43 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="353.0" layoutY="96.0" prefHeight="282.0" prefWidth="227.0">
+                        <AnchorPane layoutX="372.0" layoutY="43.0" prefHeight="335.0" prefWidth="234.0">
                            <children>
-                              <ScrollPane layoutX="14.0" layoutY="33.0" prefHeight="223.0" prefWidth="179.0" />
-                              <Label layoutX="36.0" layoutY="14.0" prefHeight="0.0" prefWidth="135.0" text="CONTACTOS" textFill="#37474F">
-                                 <font>
-                                    <Font name="Rockwell Extra Bold" size="18.0" />
-                                 </font>
-                              </Label>
+                              <ScrollPane layoutX="44.0" layoutY="14.0" prefHeight="314.0" prefWidth="193.0">
+                                 <content>
+                                    <GridPane fx:id="gridSugerencias">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                    </GridPane>
+                                 </content></ScrollPane>
                            </children>
                         </AnchorPane>
+                        <Label layoutX="404.0" layoutY="-5.0" prefHeight="57.0" prefWidth="198.0" text="Sugerencias de amistad" textAlignment="CENTER" textFill="#37474F" wrapText="true">
+                           <font>
+                              <Font name="Rockwell Extra Bold" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="Contactos">
+    <Tab fx:id="tabContactos" text="Contactos">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <AnchorPane layoutX="24.0" layoutY="35.0" prefHeight="337.0" prefWidth="490.0">
+                  <AnchorPane layoutX="8.0" layoutY="16.0" prefHeight="398.0" prefWidth="614.0">
                      <children>
+                        <ScrollPane layoutX="23.0" layoutY="60.0" prefHeight="330.0" prefWidth="275.0">
+                           <content>
+                              <GridPane fx:id="gridContacto">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
                         <Label layoutX="37.0" layoutY="25.0" prefHeight="25.0" prefWidth="192.0" text="Lista Contactos" textFill="#37474F">
                            <font>
                               <Font name="Rockwell Extra Bold" size="18.0" />
@@ -57,37 +82,52 @@
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Estadistica">
+      <Tab fx:id="tabEstadisticas" text="Estadistica">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <AnchorPane layoutX="14.0" layoutY="11.0" prefHeight="400.0" prefWidth="623.0">
                      <children>
-                        <AnchorPane layoutX="14.0" layoutY="16.0" prefHeight="367.0" prefWidth="223.0">
+                        <AnchorPane layoutX="14.0" layoutY="16.0" prefHeight="367.0" prefWidth="274.0">
                            <children>
                               <Label layoutX="44.0" layoutY="14.0" prefHeight="0.0" prefWidth="135.0" text="POPULARES" textFill="#37474F">
                                  <font>
                                     <Font name="Rockwell Extra Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <ScrollPane layoutX="14.0" layoutY="54.0" prefHeight="302.0" prefWidth="202.0">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                                </content>
+                              <ScrollPane layoutX="-16.0" layoutY="54.0" prefHeight="335.0" prefWidth="304.0">
+                                 <content>
+                                    <GridPane fx:id="gridPopulares">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                    </GridPane>
+                                 </content>
                               </ScrollPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="244.0" layoutY="29.0" prefHeight="305.0" prefWidth="362.0">
+                        <AnchorPane layoutX="257.0" layoutY="29.0" prefHeight="233.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="42.0" layoutY="15.0" prefHeight="22.0" prefWidth="269.0" text="INFO POR VENDEDOR" textFill="#37474F">
+                              <AnchorPane layoutX="75.0" layoutY="41.0" prefHeight="240.0" prefWidth="287.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="36.0" text="Cantidad de productos publicados: " />
+                                    <Label layoutX="15.0" layoutY="67.0" text="Cantidad de contactos: " />
+                                    <Label layoutX="14.0" layoutY="97.0" text="Recuento total de likes: " />
+                                    <Label layoutX="14.0" layoutY="129.0" text="Precio del ultimo producto: " />
+                                    <Label fx:id="labelCantProductos" layoutX="211.0" layoutY="36.0" text="num" />
+                                    <Label fx:id="labelCantContactos" layoutX="150.0" layoutY="67.0" text="num" />
+                                    <Label fx:id="labelCantLikes" layoutX="147.0" layoutY="97.0" text="num" />
+                                    <Label fx:id="labelPrecioPro" layoutX="166.0" layoutY="129.0" text="num" />
+                                 </children>
+                              </AnchorPane>
+                              <Label layoutX="56.0" layoutY="19.0" prefHeight="22.0" prefWidth="269.0" text="INFO POR VENDEDOR" textFill="#37474F">
                                  <font>
                                     <Font name="Rockwell Extra Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <AnchorPane layoutX="14.0" layoutY="44.0" prefHeight="246.0" prefWidth="338.0" />
                            </children>
                         </AnchorPane>
-                        <Button layoutX="381.0" layoutY="315.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="88.0" text="Reporte" />
+                        <Button fx:id="btnReporte" layoutX="381.0" layoutY="315.0" mnemonicParsing="false" onAction="#clickReporte" prefHeight="39.0" prefWidth="88.0" text="Reporte" />
                      </children>
                   </AnchorPane>
                </children>

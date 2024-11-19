@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.projectfinal.proyectofinalversionfinal.viewController.PublicacionViewController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="342.0">
+         <children>
+            <ImageView fitHeight="168.0" fitWidth="206.0" layoutX="29.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="LabelFecha" layoutX="155.0" layoutY="250.0" text="Fecha" />
+            <Label fx:id="LabelDescripcion" alignment="TOP_LEFT" layoutX="13.0" layoutY="283.0" prefHeight="89.0" prefWidth="324.0" text="Descripcion" textAlignment="CENTER" wrapText="true" />
+            <Label fx:id="LabelNombreProducto" alignment="CENTER" layoutX="9.0" layoutY="23.0" prefHeight="26.0" prefWidth="324.0" text="NombreProducto" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" layoutY="48.0" prefHeight="146.0" prefWidth="342.0">
+               <children>
+                  <ImageView fx:id="imgProducto" fitHeight="193.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

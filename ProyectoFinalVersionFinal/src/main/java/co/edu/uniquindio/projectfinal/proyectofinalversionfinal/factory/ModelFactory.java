@@ -95,6 +95,11 @@ public class ModelFactory implements IModelFactoryService {
     }
 
     @Override
+    public List<VendedorDto> getListaContactosNuevos(VendedorDto vendedor) {
+        return mapping.VendedoresToVendedoresDto(marketPlace.getListaContactosNuevos((Vendedor) mapping.usuarioDtoToUsuario(vendedor)));
+    }
+
+    @Override
     public ChatDto getChat(VendedorDto vendedor, VendedorDto contacto) {
         Chat chat = marketPlace.getChat(
                 (Vendedor) mapping.usuarioDtoToUsuario(vendedor),
@@ -132,7 +137,7 @@ public class ModelFactory implements IModelFactoryService {
 
     @Override
     public List<Vendedor> getListaMeGusta(String idVendedor, PublicacionDto dto) {
-        return marketPlace.getListaMeGusta(idVendedor, mapping.productoDtoToProducto(PublicacionDto.getProducto()));
+        return marketPlace.getListaMeGusta(idVendedor, mapping.productoDtoToProducto(dto.getProducto()));
     }
 
     @Override
@@ -147,7 +152,7 @@ public class ModelFactory implements IModelFactoryService {
 
     @Override
     public List<PublicacionDto> getListaPublicacionesDto(String idVendedor) {
-        return List.of();
+        return mapping.publicacionesToPublicacionesDto(marketPlace.getListaPublicaciones(idVendedor));
     }
 
     public List<MensajeDto> getListaMensajeChat(String id) {
@@ -188,14 +193,14 @@ public class ModelFactory implements IModelFactoryService {
 
     private static void inicializarDatos() {
 
-        MarketPlace marketPlace1 = new MarketPlace("Marketsito");
+        MarketPlace marketPlace1 = new MarketPlace("Market");
 
         //Creacion de productos
-        Producto producto1 = new Producto("Servicio Guardaespaldas", "", "Servicio privado", Estado.PUBLICADO, 200);
-        Producto producto2 = new Producto("Camiseta Local JUNIOR FC 2024", "","Equipación deportiva",Estado.PUBLICADO, 299950);
-        Producto producto3 = new Producto("Bicibleta usada", "","Artículos usados",Estado.PUBLICADO, 20000);
-        Producto producto4 = new Producto("Mano de guineo verde", "","Alimentos",Estado.PUBLICADO, 2000);
-        Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca","", "Artículas deportivos",Estado.VENDIDO,4500000);
+        Producto producto1 = new Producto("Servicio Guardaespaldas", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/Guardaespaldas.jpg", "Servicio privado", Estado.PUBLICADO, 200);
+        Producto producto2 = new Producto("Camiseta Local JUNIOR FC 2024", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/Camiseta Junior.png","Equipación deportiva",Estado.PUBLICADO, 299950);
+        Producto producto3 = new Producto("Bicibleta usada", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/biciPro.png","Artículos usados",Estado.PUBLICADO, 20000);
+        Producto producto4 = new Producto("Mano de guineo verde", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/guineitos.jpeg","Alimentos",Estado.PUBLICADO, 2000);
+        Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca","/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/brazuca.png", "Artículas deportivos",Estado.VENDIDO,4500000);
 
         //Creacion de publicaciones
         Publicacion publicacion1 = new Publicacion(LocalDate.now(), LocalTime.now(), producto1,"Servicio privado de seguidad 5 estrellas y 24 hpras. Cuenta con 2 guardaespaldas expertos en MMA para protegerlo a usted y su familia (uno de ellos se cree capaz de ganarle una pelea a Khabid). Precio negociable", "00001");
@@ -216,6 +221,16 @@ public class ModelFactory implements IModelFactoryService {
         Vendedor vendedor9 = new Vendedor("vendedor9","apellido9","00009","DirecciónX","user9","12345","09");
         Vendedor vendedor10 = new Vendedor("vendedor10", "apellido10","000010","DirecciónX","user10","12345","10");
         Vendedor vendedor11 = new Vendedor("vendedor11","apellido11","000011","DirecciónX","user11","12345","11");
+
+        //Likes
+        publicacion1.getListaMegustas().add(vendedor2);
+        publicacion1.getListaMegustas().add(vendedor3);
+        publicacion1.getListaMegustas().add(vendedor4);
+
+        publicacion2.getListaMegustas().add(vendedor5);
+        publicacion2.getListaMegustas().add(vendedor6);
+
+        publicacion3.getListaMegustas().add(vendedor7);
 
         //Creacion de administradores
         Administrador admin = new Administrador("Admin", "istrador", "00000", "Privada", "admin", "12345","00");
@@ -264,7 +279,7 @@ public class ModelFactory implements IModelFactoryService {
         marketPlace1.agregarContactosEntreSi(vendedor1,vendedor11);
 
         //Agregar distintos objetos al marketplace automaticamente
-        List<Object> parametros = Arrays.asList(vendedor1,vendedor2,admin);
+        List<Object> parametros = Arrays.asList(vendedor1,vendedor2,admin,vendedor3,vendedor4,vendedor5,vendedor6,vendedor10,vendedor11);
         parametros.forEach(marketPlace1::agregarAutomatico);
 
         marketPlace = marketPlace1;

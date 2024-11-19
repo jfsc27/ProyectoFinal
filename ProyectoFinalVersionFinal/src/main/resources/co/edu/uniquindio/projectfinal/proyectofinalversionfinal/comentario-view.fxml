@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="69.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.projectfinal.proyectofinalversionfinal.viewController.ComentarioViewController">
+   <children>
+      <AnchorPane layoutX="7.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="342.0">
+         <children>
+            <Label fx:id="labelComentario" alignment="TOP_LEFT" layoutX="6.0" layoutY="5.0" prefHeight="43.0" prefWidth="237.0" text="Comentario" wrapText="true" />
+            <Label fx:id="labelFecha" layoutX="256.0" layoutY="16.0" prefHeight="18.0" prefWidth="82.0" text="Fecha" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
