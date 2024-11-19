@@ -47,6 +47,8 @@ public class LoginViewController {
         UsuarioDto dto = buildUsuarioDto();
         if (usuarioController.validarUsuario(dto)){
             abrirVentana(usuarioController.getUsuario(dto));
+        }else {
+            JOptionPane.showMessageDialog(null, "El usuario o la contrasenia es incorrecto");
         }
     }
 

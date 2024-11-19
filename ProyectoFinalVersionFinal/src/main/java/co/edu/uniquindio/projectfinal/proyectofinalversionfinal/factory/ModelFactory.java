@@ -201,6 +201,12 @@ public class ModelFactory implements IModelFactoryService {
         Producto producto3 = new Producto("Bicibleta usada", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/biciPro.png","Artículos usados",Estado.PUBLICADO, 20000);
         Producto producto4 = new Producto("Mano de guineo verde", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/guineitos.jpeg","Alimentos",Estado.PUBLICADO, 2000);
         Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca","/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/brazuca.png", "Artículas deportivos",Estado.VENDIDO,4500000);
+        Producto producto1Kit = new Producto("Bolsitas pa tu guineo", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/bolsitas.png", "Alimentos", Estado.PUBLICADO, 100);
+        Producto producto2Kit = new Producto("La monda esa e corta e racimo e guineo", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/lamondaesaquecortaelracimoeguineo.png", "Alimentos", Estado.PUBLICADO, 5000);
+        Kit producto6 = new Kit("Kit de cosecha de mancha e platano", "/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/imagenes/berraqueraekit.jpeg", "Herramientas de igiene personal", Estado.PUBLICADO, 300);
+
+        producto6.agregarProducto(producto1Kit);
+        producto6.agregarProducto(producto2Kit);
 
         //Creacion de publicaciones
         Publicacion publicacion1 = new Publicacion(LocalDate.now(), LocalTime.now(), producto1,"Servicio privado de seguidad 5 estrellas y 24 hpras. Cuenta con 2 guardaespaldas expertos en MMA para protegerlo a usted y su familia (uno de ellos se cree capaz de ganarle una pelea a Khabid). Precio negociable", "00001");
@@ -208,6 +214,7 @@ public class ModelFactory implements IModelFactoryService {
         Publicacion publicacion3 = new Publicacion(LocalDate.now().plusDays(2),LocalTime.now(),producto3,"Vendo mi bicicleta con 2 semanas de uso por necesidad, le hacen falta las ruedas pero ella sirve. Precio negociable =D", "00003");
         Publicacion publicacion4 = new Publicacion(LocalDate.now().plusDays(3),LocalTime.now(),producto4,"Deliciosa mano de guineo verde perfecta pa un cayeye. 1 mano por 2k, 3 manos en 5k pa ti", "00004");
         Publicacion publicacion5 = new Publicacion(LocalDate.now().plusDays(4),LocalTime.now(),producto5,"El mejor balón que se ha creado en la historia del fútbol. Firmada por Camilo Zúñiga", "00005");
+        Publicacion publicacion6 = new Publicacion(LocalDate.now(), LocalTime.now(), producto6, "Con este quit no tendras mas preocupaciones ahora podras recoger tu mancha facil y sencillo mi buen agropecunario", "00006");
 
         //Creacion de vendedores
         Vendedor vendedor1 = new Vendedor("Miguel", "Durant", "00001", "Cambia a diario", "MigueMC", "12345", "01");
@@ -254,6 +261,7 @@ public class ModelFactory implements IModelFactoryService {
         muro.agregarPublicacion(publicacion2);
         muro.agregarPublicacion(publicacion3);
         muro2.agregarPublicacion(publicacion4);
+        muro.agregarPublicacion(publicacion6);
 
         //Agregar muro a un vendedor
         vendedor1.setMuro(muro);
