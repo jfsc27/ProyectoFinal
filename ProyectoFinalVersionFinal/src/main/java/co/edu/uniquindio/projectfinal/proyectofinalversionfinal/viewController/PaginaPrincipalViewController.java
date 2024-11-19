@@ -7,6 +7,8 @@ import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.controller.Usuar
 import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.factory.ModelFactory;
 import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.mapping.dto.VendedorDto;
 
+import java.io.IOException;
+
 public class PaginaPrincipalViewController {
     ModelFactory modelFactory;
     VendedorDto vendedor;
@@ -14,4 +16,12 @@ public class PaginaPrincipalViewController {
     UsuarioController usuarioController;
     MuroController muroController;
     MensajeController mensajeController;
+
+    public void inicializarPaginaPrincipal(VendedorDto vendedor) throws IOException {
+        modelFactory = ModelFactory.getInstance();
+        publicacionController = new PublicacionController();
+        usuarioController = new UsuarioController();
+        muroController = new MuroController();
+        mensajeController = new MensajeController();
+}
 }
