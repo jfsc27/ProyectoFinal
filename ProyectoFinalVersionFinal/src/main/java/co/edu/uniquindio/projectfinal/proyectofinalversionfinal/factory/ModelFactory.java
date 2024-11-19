@@ -188,7 +188,7 @@ public class ModelFactory implements IModelFactoryService {
 
     private static void inicializarDatos() {
 
-        MarketPlace marketPlace1 = new MarketPlace();
+        MarketPlace marketPlace1 = new MarketPlace("Marketsito");
 
         //Creacion de productos
         Producto producto1 = new Producto("Servicio Guardaespaldas", "", "Servicio privado", Estado.PUBLICADO, 200);

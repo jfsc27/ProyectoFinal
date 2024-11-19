@@ -9,6 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.mapping.dto.AdministradorDto;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -50,6 +53,18 @@ public class LoginViewController {
         if (usuario instanceof VendedorDto){
             JOptionPane.showMessageDialog(null, "Bienvenido Vendedor "+ usuario.getNombre());
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/paginaPrincipal-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            PaginaPrincipalViewController controller = fxmlLoader.getController();
+            controller.inicializarPaginaPrincipal(((VendedorDto) usuario));
+            stage.setScene(scene);
+            Stage stageCerrar = (Stage) btnIniciarSesion.getScene().getWindow();
+            stageCerrar.close();
+            stage.show();
+        } else if (usuario instanceof AdministradorDto){
+            JOptionPane.showMessageDialog(null, "Bienvenido Administrador "+ usuario.getNombre());
+        }else{
+            JOptionPane.showMessageDialog(null, "Este usuario no existe");
         }
     }
 
@@ -65,8 +80,16 @@ public class LoginViewController {
     }
 
     @FXML
-    void onRegistrarse(ActionEvent event) {
+    void onRegistrarse(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/registro-view.fxml"));
+        Scene scene = new Scene(loader.load(),360,450);
+        Stage stage = new Stage();
+        stage.setScene(scene);
 
+        //Cerrar la ventana actual
+        Stage stageCerrar = (Stage) btnIniciarSesion.getScene().getWindow();
+        stageCerrar.close();
+        stage.show();
     }
 
     public ModelFactory getModelFactory() {
