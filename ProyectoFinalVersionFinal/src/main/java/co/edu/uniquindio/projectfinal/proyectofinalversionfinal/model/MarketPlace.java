@@ -2,6 +2,7 @@ package co.edu.uniquindio.projectfinal.proyectofinalversionfinal.model;
 
 import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.services.ICrudPublicacion;
 import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.services.IInteraccionEntreContactos;
+import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.services.IPublicacionDecorator;
 
 
 import java.time.LocalDate;
@@ -26,6 +27,19 @@ public class MarketPlace implements IInteraccionEntreContactos, ICrudPublicacion
 
     }
 
+    public void aplicarDescuento(String idVendedor, String idPublicacion){
+        for (Vendedor vendedor : listaVendedores){
+            if (vendedor.getIdVendedor().equals(idVendedor)){
+                for(Publicacion publicacion : vendedor.getMuro().getListaPublicaciones()){
+                    if (publicacion.getIdPublicacion().equals(idPublicacion)){
+                        IPublicacionDecorator iPublicacionDecorator = publicacion;
+                        iPublicacionDecorator = (IPublicacionDecorator) new DescuentoDecorator(iPublicacionDecorator);
+                        publicacion.setDescripcion(iPublicacionDecorator.getDescripcion());
+                    }
+                }
+            }
+        }
+    }
     public <T> void agregarAutomatico(T objeto){
         if (objeto instanceof Usuario){
             listaUsuarios.add((Usuario)objeto);

@@ -19,6 +19,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -48,6 +49,9 @@ public class PaginaPrincipalViewController {
         inicializarEstadisticas();
         inicializarVendedor();
     }
+
+
+
     /**
      * ///////////////////////////////////////  TAB MARKETPLACE  /////////////////////////////////////////////////////////
      */
@@ -255,6 +259,16 @@ public class PaginaPrincipalViewController {
 
     @FXML
     private Label labelUsuarioP;
+
+    @FXML
+    private Button descuentoBtn;
+
+    @FXML
+    void onAplicarDescuento(ActionEvent event) {
+        String idVendedor = JOptionPane.showInputDialog(null, "Ingrese su id de vendedor: ");
+        String idPublicacion = JOptionPane.showInputDialog(null, "Ingrese el id de la publicacion: ");
+        publicacionController.aplicarDescuento(idVendedor,idPublicacion);
+    }
 
 
 

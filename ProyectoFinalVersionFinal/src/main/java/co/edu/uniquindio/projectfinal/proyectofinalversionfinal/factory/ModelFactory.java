@@ -12,33 +12,78 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * La clase ModelFactory es una implementación del patrón de diseño Singleton que actúa como intermediario
+ * entre los controladores y el modelo de la aplicación. Proporciona métodos para realizar operaciones
+ * en el modelo y convierte entidades en DTOs y viceversa, utilizando la clase {@link MarketPlaceMappingImpl}.
+ * También expone los métodos necesarios para interactuar con el sistema de negocio representado por {@link MarketPlace}.
+ */
 public class ModelFactory implements IModelFactoryService {
     private static ModelFactory instance;
     private static MarketPlace marketPlace;
     private static MarketPlaceMappingImpl mapping;
 
+    /**
+     * Constructor privado que inicializa la lógica de negocio y el mapeador.
+     * Este constructor garantiza la inicialización adecuada del sistema.
+     */
     private ModelFactory() {
         inicializarDatos();
         mapping = new MarketPlaceMappingImpl();
         mapping.setModelFactory(this);
     }
 
+    /**
+     * Devuelve la instancia única de la fábrica de modelos, garantizando
+     * el patrón Singleton.
+     *
+     * @return la instancia única de {@link ModelFactory}.
+     */
     public static ModelFactory getInstance() {
         if (instance == null) {
             instance = new ModelFactory();
         }
         return instance;
     }
+
+    /**
+     * Aplica un descuento a una publicación específica de un vendedor.
+     *
+     * @param idVendedor    el identificador único del vendedor.
+     * @param idPublicacion el identificador único de la publicación.
+     */
+    public void aplicarDescuento(String idVendedor, String idPublicacion){
+        marketPlace.aplicarDescuento(idVendedor, idPublicacion);
+    }
+
+    /**
+     * Obtiene un usuario validado a partir de sus credenciales encapsuladas en un DTO.
+     *
+     * @param usuario el objeto {@link UsuarioDto} con las credenciales.
+     * @return un objeto {@link UsuarioDto} si las credenciales son válidas; de lo contrario, null.
+     */
     @Override
     public UsuarioDto getUsuario(UsuarioDto usuario) {
         return validarLogin(usuario) ?
                 mapping.usuarioToUsuarioDto(marketPlace.getUsuarioLogin(usuario.getUsuario(), usuario.getPassword())) :
                 null;
     }
+
+    /**
+     * Obtiene un usuario segun su identificacion
+     * @param id
+     * @return
+     */
     public UsuarioDto getUsuarioPorId(String id) {
         return mapping.usuarioToUsuarioDto(marketPlace.getUsuarioPorId(id));
     }
 
+    /**
+     * Valida las credenciales de un usuario.
+     *
+     * @param usuario el objeto {@link UsuarioDto} con las credenciales a validar.
+     * @return true si las credenciales son válidas; de lo contrario, false.
+     */
     @Override
     public boolean validarLogin(UsuarioDto usuario) {
         if (marketPlace.verificarUsuario(usuario.getUsuario(), usuario.getPassword())) {
@@ -47,16 +92,35 @@ public class ModelFactory implements IModelFactoryService {
         return false;
     }
 
+    /**
+     * Obtiene un usuario completo del modelo a partir de un DTO de usuario.
+     *
+     * @param usuario el objeto {@link UsuarioDto} con las credenciales del usuario.
+     * @return un objeto {@link Usuario} correspondiente al usuario completo.
+     */
     @Override
     public Usuario getUsuarioCompleto(UsuarioDto usuario) {
         return marketPlace.getUsuarioLogin(usuario.getUsuario(), usuario.getPassword());
     }
 
+    /**
+     * Agrega un "me gusta" a una publicación específica.
+     *
+     * @param usuario     el usuario que da "me gusta", representado como {@link UsuarioDto}.
+     * @param idVendedor  el identificador del vendedor propietario de la publicación.
+     * @param dto         el objeto {@link PublicacionDto} que representa la publicación.
+     */
     @Override
     public void darMeGustaPublicacion(UsuarioDto usuario, String idVendedor, PublicacionDto dto) {
         marketPlace.darMeGustaPublicacion((Vendedor) mapping.usuarioDtoToUsuario(usuario), idVendedor, dto.getFechaPublicacion(), dto.getHoraPublicacion());
     }
 
+    /**
+     * Obtiene una lista de productos disponibles para un usuario.
+     *
+     * @param usuario el objeto {@link UsuarioDto} que representa al usuario.
+     * @return una lista de objetos {@link ProductoDto} correspondientes a los productos disponibles.
+     */
     @Override
     public List<ProductoDto> getListaProductosDisponibles(UsuarioDto usuario) {
         Usuario user = marketPlace.getUsuarioLogin(usuario.getUsuario(), usuario.getPassword());
@@ -69,36 +133,82 @@ public class ModelFactory implements IModelFactoryService {
         return disponibles;
     }
 
+    /**
+     * Elimina una publicación asociada a un vendedor.
+     *
+     * @param publicacion el objeto {@link PublicacionDto} que representa la publicación a eliminar.
+     * @param vendedor el objeto {@link VendedorDto} que representa al vendedor dueño de la publicación.
+     * @return true si la publicación fue eliminada exitosamente, false en caso contrario.
+     */
     @Override
     public boolean eliminarPublicacion(PublicacionDto publicacion, VendedorDto vendedor) {
         return false;
     }
 
+    /**
+     * Actualiza los datos de una publicación asociada a un vendedor.
+     *
+     * @param publicacion el objeto {@link PublicacionDto} que contiene los datos actualizados.
+     * @param vendedor el objeto {@link VendedorDto} que representa al vendedor dueño de la publicación.
+     * @return true si la publicación fue actualizada exitosamente, false en caso contrario.
+     */
     @Override
     public boolean actualizarPublicacion(PublicacionDto publicacion, VendedorDto vendedor) {
         return false;
     }
 
+    /**
+     * Obtiene una lista de publicaciones de un muro.
+     *
+     * @param muro el objeto {@link Muro} que contiene las publicaciones.
+     * @return una lista vacía (método no implementado).
+     */
     @Override
     public List<PublicacionDto> getListaPublicaciones(Muro muro) {
         return List.of();
     }
 
+    /**
+     * Crea un nuevo usuario en el sistema.
+     *
+     * @param vendedor el objeto {@link VendedorDto} que representa al nuevo usuario.
+     * @return true si el usuario fue creado exitosamente, false en caso contrario.
+     */
     @Override
     public boolean crearUsuario(VendedorDto vendedor) {
         return marketPlace.crearUsuario((Vendedor) mapping.usuarioDtoToUsuario(vendedor));
     }
 
+    /**
+     * Agrega un mensaje a un chat existente.
+     *
+     * @param mensaje el objeto {@link MensajeDto} que representa el mensaje a agregar.
+     * @param chat el objeto {@link ChatDto} que representa el chat donde se agregará el mensaje.
+     * @return true si el mensaje fue agregado exitosamente, false en caso contrario.
+     */
     @Override
     public boolean agregarMensajeChat(MensajeDto mensaje, ChatDto chat) {
         return marketPlace.agregarMensajeChat(mapping.mesajeDtoToMensaje(mensaje), mapping.chatDtoToChat(chat));
     }
 
+    /**
+     * Obtiene una lista de nuevos contactos de un vendedor.
+     *
+     * @param vendedor el objeto {@link VendedorDto} que representa al vendedor.
+     * @return una lista de objetos {@link VendedorDto} que son nuevos contactos del vendedor.
+     */
     @Override
     public List<VendedorDto> getListaContactosNuevos(VendedorDto vendedor) {
         return mapping.VendedoresToVendedoresDto(marketPlace.getListaContactosNuevos((Vendedor) mapping.usuarioDtoToUsuario(vendedor)));
     }
 
+    /**
+     * Obtiene un chat entre dos vendedores.
+     *
+     * @param vendedor el objeto {@link VendedorDto} que representa al usuario solicitante.
+     * @param contacto el objeto {@link VendedorDto} que representa al contacto con el que se tiene el chat.
+     * @return un objeto {@link ChatDto} que representa el chat entre ambos vendedores.
+     */
     @Override
     public ChatDto getChat(VendedorDto vendedor, VendedorDto contacto) {
         Chat chat = marketPlace.getChat(
@@ -108,12 +218,24 @@ public class ModelFactory implements IModelFactoryService {
         return mapping.chatToChatDto(chat);
     }
 
+    /**
+     * Obtiene la lista de productos de un vendedor.
+     *
+     * @param id el identificador del vendedor.
+     * @return una lista de objetos {@link ProductoDto} que representan los productos del vendedor.
+     */
     @Override
     public List<ProductoDto> getListaProductosDto(String id) {
         return mapping.productosToProductosDto(marketPlace.getListaProductosVendedor(id));
 
     }
 
+    /**
+     * Obtiene una lista de contactos de un vendedor en formato DTO.
+     *
+     * @param id el identificador del vendedor.
+     * @return una lista de objetos {@link VendedorDto} que representan los contactos del vendedor.
+     */
     @Override
     public List<VendedorDto> getListaContactosDto(String id) {
         return mapping.VendedoresToVendedoresDto(marketPlace.getListaContactos(id));
@@ -191,6 +313,9 @@ public class ModelFactory implements IModelFactoryService {
         return marketPlace.getLikesComentario(mapping.comentarioDtoToComentario(dto), mapping.publicacionDtoToPublicacion(publicacion));
     }
 
+    /**
+     * Se inicializan los datos quemasdos
+     */
     private static void inicializarDatos() {
 
         MarketPlace marketPlace1 = new MarketPlace("Market");

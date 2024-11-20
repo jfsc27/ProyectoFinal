@@ -1,11 +1,14 @@
 package co.edu.uniquindio.projectfinal.proyectofinalversionfinal.model;
 
+import co.edu.uniquindio.projectfinal.proyectofinalversionfinal.services.IPublicacionDecorator;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Publicacion {
+public class Publicacion implements IPublicacionDecorator {
     private String idVendedor;
     private String idPublicacion;
     private LocalDate fechaPublicacion;
@@ -26,6 +29,10 @@ public class Publicacion {
     public Publicacion() {
         listaComentarios = new ArrayList<Comentario>();
         listaMegustas = new ArrayList<>();
+    }
+
+    public Publicacion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     /**
@@ -80,6 +87,7 @@ public class Publicacion {
         this.listaComentarios = listaComentarios;
     }
 
+    @Override
     public String getDescripcion() {
         return descripcion;
     }
