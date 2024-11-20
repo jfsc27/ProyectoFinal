@@ -23,6 +23,7 @@
                   <ImageView fx:id="imgProducto" fitHeight="193.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
+            <Label fx:id="LabelPrecio" layoutX="255.0" layoutY="251.0" text="Precio" />
          </children>
       </AnchorPane>
    </children>

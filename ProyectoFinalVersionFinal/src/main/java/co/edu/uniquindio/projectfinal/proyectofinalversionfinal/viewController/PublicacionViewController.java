@@ -22,6 +22,10 @@ public class PublicacionViewController {
     @FXML
     private ImageView imgProducto;
 
+    @FXML
+    private Label LabelPrecio;
+
+
     PublicacionDto publicacion;
 
 
@@ -30,6 +34,7 @@ public class PublicacionViewController {
         LabelFecha.setText(publicacion.getFechaPublicacion().toString());
         LabelNombreProducto.setText(publicacion.getProducto().getNombre());
         imgProducto.setImage(publicacion.getProducto().getImagen());
+        LabelPrecio.setText(String.valueOf(publicacion.getProducto().getPrecio()));
 
         this.publicacion = publicacion;
     }

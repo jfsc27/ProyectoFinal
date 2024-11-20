@@ -46,6 +46,7 @@ public class PaginaPrincipalViewController {
         inicializarMarketPlace();
         inicializarContactos();
         inicializarEstadisticas();
+        inicializarVendedor();
     }
     /**
      * ///////////////////////////////////////  TAB MARKETPLACE  /////////////////////////////////////////////////////////
@@ -229,4 +230,69 @@ public class PaginaPrincipalViewController {
         texto       += "Cantidad de contactos: " + labelCantContactos.getText()+ "\n";
         return texto;
     }
+
+    /**
+     * ///////////////////////////////////////  TAB VENDEDOR  /////////////////////////////////////////////////////////
+     */
+
+    @FXML
+    private GridPane gridVendedor;
+
+    @FXML
+    private Label labelApellidoP;
+
+    @FXML
+    private Label labelContraseñaP;
+
+    @FXML
+    private Label labelDireccionP;
+
+    @FXML
+    private Label labelIDP;
+
+    @FXML
+    private Label labelNombreP;
+
+    @FXML
+    private Label labelUsuarioP;
+
+
+
+    public void inicializarVendedor() throws IOException {
+        llenarDatosVendedor();
+        llenarProductosVendedor();
+    }
+
+    public void llenarDatosVendedor() {
+        labelNombreP.setText(vendedor.getNombre());
+        labelApellidoP.setText(vendedor.getApellido());
+        labelDireccionP.setText(vendedor.getDireccion());
+        labelIDP.setText(vendedor.getIdVendedor());
+        labelUsuarioP.setText(vendedor.getUsuario());
+        labelContraseñaP.setText(vendedor.getPassword());
+
+    }
+
+
+    public void llenarProductosVendedor() throws IOException {
+        int columnas = 0;
+        int filas = 0;
+        gridVendedor.getChildren().clear();
+        List<PublicacionDto> publicaciones = muroController.getListaPublicaciones(vendedor);
+        for (int i = 0; i < publicaciones.size(); i++) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/projectfinal/proyectofinalversionfinal/publicacion-view.fxml"));
+            AnchorPane pane = loader.load();
+
+            PublicacionViewController controller = loader.getController();
+            controller.setData(publicaciones.get(i));
+
+            gridVendedor.add(pane,columnas,filas);
+            filas++;
+        }
+
+
+    }
+
+
+
 }
